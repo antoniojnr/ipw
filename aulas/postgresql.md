@@ -13,7 +13,24 @@ O script lhe passará algumas alternativas. Responda conforme mostrado abaixo.
 
 <pre>
 Enter name of role to add: <b>ipw</b>
-Shall the new role be a superuser? (y/n) n
-Shall the new role be allowed to create databases? (y/n) y
-Shall the new role be allowed to create more new roles? (y/n) n
+Shall the new role be a superuser? (y/n) <b>n</b>
+Shall the new role be allowed to create databases? (y/n) <b>y</b>
+Shall the new role be allowed to create more new roles? (y/n) <b>n</b>
+</pre>
+
+Se não existe um usuário Linux com o mesmo nome, você deve criar um usando o comando `adduser`. Você terá que fazer isso usando uma conta com privilégios de superusuário (e não logado como o usuário **postgres**).
+
+<pre>
+$ sudo adduser <b>ipw</b>
+</pre>
+
+# Crie uma nova base de dados
+O sistema de autenticação do Postgres assume que existe uma base de dados com o mesmo nome do usuário sendo usado para login, à qual o usuário tem acesso.
+
+Na última seção, criamos um usuário chamado `ipw` e, por isso, esse usuário tentará se conectar a uma base de dados chamada `ipw` por padrão. Crie a base de dados com o comando a seguir.
+
+Se você estuver logado como o usuário **postgres**, digite:
+
+<pre>
+createdb <b>ipw</b>
 </pre>
