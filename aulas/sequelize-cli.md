@@ -28,7 +28,7 @@ projeto
 </pre>
 
 4. Neste momento, você precisará configurar o acesso ao banco de dados. Usaremos o banco de dados PostgreSQL. Certifique-se de ter seguido os passos listados [aqui](https://github.com/antoniojnr/ipw/blob/master/aulas/postgresql.md)
-5. Com o usuário e base de dados criados, iremos inserir as configurações no arquivo `config/config.json`. O valor inserido em `username` é <span style="color: red;">`ipw`</span>, conforme definido nos passos de configuração; o valor de `password` é a senha que você inseriu para o usuário e o `database` é `ipw`. Descubra o IP da máquina usando `ip addr`. O IP deverá ser inserido em `hostname`. Finalmente, o `dialect` é `postgres`. Por enquanto, preencha apenas as configurações do ambiente `development`.
+5. Com o usuário e base de dados criados, iremos inserir as configurações no arquivo `config/config.json`. O valor inserido em `username` é `ipw`, conforme definido nos passos de configuração; o valor de `password` é a senha que você inseriu para o usuário e o `database` é `ipw`. Descubra o IP da máquina usando `ip addr`. O IP deverá ser inserido em `hostname`. Finalmente, o `dialect` é `postgres`. Por enquanto, preencha apenas as configurações do ambiente `development`.
 
 Suas configurações devem ficar como as listadas a seguir:
 <pre>
