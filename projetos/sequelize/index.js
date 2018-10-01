@@ -2,8 +2,9 @@ var express = require('express');
 var app = express();
 var models = require('./models');
 var http = require('http');
+var user_routes = require('./routes/users');
 
-var bp = require('body-parser')
+var bp = require('body-parser');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -12,8 +13,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(user_routes);
+
 var port = 3000;
 app.set('port', port);
+
   /**
    * Cria o servidor HTTP
    */
