@@ -1,5 +1,5 @@
 var express = require('express');
-var models = require('./models');
+var models = require('../models');
 var bp = require('body-parser');
 var router = express.Router();
 

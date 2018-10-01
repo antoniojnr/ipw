@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(user_routes);
+app.use('/users', user_routes);
 
 var port = 3000;
 app.set('port', port);
