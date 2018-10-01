@@ -74,7 +74,7 @@ Para ver o arquivo no navegador, dê um clique duplo sobre o arquivo `index.html
 
 Se você viu um círculo sobre uma página em branco, então deu tudo certo!
 
-O projeto completado nesta parte está [aqui](https://github.com/antoniojnr/ipw/tree/master/projetos/p5js).
+O projeto completado nesta parte está [aqui](https://github.com/antoniojnr/ipw/tree/master/projetos/p5js-inicio).
 
 ## Entendendo um sketch
 
@@ -100,8 +100,20 @@ Controle-a com `noLoop()`, `redraw()` e `loop()`. Depois que `noLoop()` parar o 
 
 Use as funções e constantes a seguir para configurar como o seu sketch. Você poderá definir propriedades como o tamanho do painel onde poderá desenhar, velocidade de atualização da animação, entre outros.
 
-`createCanvas()`
+### `createCanvas()`
 
-Use a função `createCanvas(largura, altura)` para criar um novo painel de dimensões `largura` x `altura`.
+`createCanvas(largura, altura)` cria um novo painel de dimensões `largura` x `altura`.
 
-``
+### `resizeCanvas()`
+
+`resizeCanvas(largura, altura)` redimensiona o painel com as novas dimensões `largura` x `altura`.
+
+### `frameRate()`
+
+`frameRate(fr)` define um novo valor para a quantidade de quadros por segundos desenhados. Para `frameRate(30)`, o programa tentará atualizar os quadros 30 vezes por segundo.
+
+## Desenhando formas
+
+## Outras funções
+
+Consulte a referência da linguagem para mais informações: [https://p5js.org/reference](https://p5js.org/reference)
