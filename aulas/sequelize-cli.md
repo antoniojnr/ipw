@@ -30,7 +30,7 @@ projeto
 
 4. Neste momento, você precisará configurar o acesso ao banco de dados. Usaremos o banco de dados PostgreSQL. Certifique-se de ter seguido os passos listados [aqui](https://github.com/antoniojnr/ipw/blob/master/aulas/postgresql.md)
 
-# Configurando o projeto
+## Configurando o projeto
 1. Com o usuário e base de dados criados, iremos inserir as configurações no arquivo `config/config.json`. O valor inserido em `username` é `ipw`, conforme definido nos passos de configuração; o valor de `password` é a senha que você inseriu para o usuário e o `database` é `ipw`. Descubra o IP da máquina usando `ip addr`. O IP deverá ser inserido em `hostname`. Finalmente, o `dialect` é `postgres`. Por enquanto, preencha apenas as configurações do ambiente `development`.
 
 Suas configurações devem ficar como as listadas a seguir:
@@ -56,8 +56,8 @@ A saída seguinte indica sucesso na operação. Qualquer saída diferente com al
 Database ipw created.
 </pre>
 
-# Alterando a base de dados
-## Criando modelo e migração
+## Alterando a base de dados
+### Criando modelo e migração
 Com a conexão ao banco de dados configurada corretamente, é hora de criar nosso primeiro modelo. O `sequelize-cli` dispõe de um script que gera o *modelo* no arquivo apropriado e uma *migração*. Migrações são evoluções no seu esquema de dados, que serão feitas automaticamente pelo Sequelize.
 
 Iremos gerar um modelo **User** com os seguintes atributos: **firstName**:*string*, **lastName**:*string* e **email**:*string*. Para isso, insira o comando a seguir:
@@ -67,7 +67,7 @@ node_modules\.bin\sequelize model:generate --name User --attributes firstName:st
 
 O comando acima emite uma saída indicando que um novo modelo e uma nova migração foram criados nos diretórios `models` e `migrations`.
 
-## Executando a migração
+### Executando a migração
 Para executar a migração e criar a(s) tabela(s) necessária(s) para armazenar o modelo criado, execute o comando:
 <pre>
 node_modules\.bin\sequelize db:migrate
@@ -75,7 +75,7 @@ node_modules\.bin\sequelize db:migrate
 
 Este comando rodará o script para criar a tabela `Users`, onde será armazenado cada `User`.
 
-## Verificando as mudanças
+### Verificando as mudanças
 Verifique se a tabela `Users` foi criada utilizando a interface cliente do Postgres. Conectado como **postgres**, execute os comandos a seguir. Esse comando deve ser executado no terminal do sistema operacional instalado na sua máquina virtual.
 
 Para abrir a interface cliente, digite `psql`.
@@ -100,10 +100,10 @@ public | Users         | table | ipw
 (2 rows)
 </pre>
 
-## Desfazendo a migração
+### Desfazendo a migração
 Caso tenha feito algo errado e deseje reverter essa migração, ou seja, desfazer tudo o que foi feito por ela que, no caso, é criar a tabela `Users`, insira o comando a seguir. Esse comando só desfaz a migração mais recente.
 
-Para refazer a migração, execute o comando listado em [Executando a migração](https://github.com/antoniojnr/ipw/blob/master/aulas/sequelize-cli.md#criando-o-projeto)
+Para refazer a migração, execute o comando listado em [Executando a migração](https://github.com/antoniojnr/ipw/blob/master/aulas/sequelize-cli.md#executando-a-migração)
 <pre>
 node_modules\.bin\sequelize db:migrate:undo
 </pre>
