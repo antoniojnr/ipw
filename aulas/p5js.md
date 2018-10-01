@@ -95,3 +95,13 @@ Chamada diretamente após `setup()`, a função `draw()` executa continuamente o
 Se `noLoop()` for chamada em `setup()`, `draw()` ainda será executada uma vez antes de parar. `draw()` é chamada automaticamente e nunca deve ser chamada explicitamente.
 
 Controle-a com `noLoop()`, `redraw()` e `loop()`. Depois que `noLoop()` parar o código em `draw()`, `redraw()` faz com que o código dentro de `draw()` execute uma vez e `loop()` faz com que o código volte a executar continuamente.
+
+## Configuração do sketch
+
+Use as funções e constantes a seguir para configurar como o seu sketch. Você poderá definir propriedades como o tamanho do painel onde poderá desenhar, velocidade de atualização da animação, entre outros.
+
+`createCanvas()`
+
+Use a função `createCanvas(largura, altura)` para criar um novo painel de dimensões `largura` x `altura`.
+
+``

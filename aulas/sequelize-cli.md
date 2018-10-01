@@ -51,10 +51,12 @@ Com o comando a seguir, você criará a base de dados `ipw` especificada no arqu
 node_modules\.bin\sequelize db:create
 </pre>
 
-A saída seguinte indica sucesso na operação. Qualquer saída diferente com alguma mensagem precedida por `ERROR:` indica que houve falha na criação da base de dados.
+A saída seguinte indica sucesso na operação.
 <pre>
 Database ipw created.
 </pre>
+
+Qualquer saída diferente com alguma mensagem precedida por `ERROR:` indica que houve falha na criação da base de dados, exceto se a saída indicar que a base de dados já existe (`Database 'ipw' already exists.`), o que indicará que você conseguiu se conectar com sucesso ao banco de dados. Esse erro aparece porque você já possivelmente já criou a base de dados no passo 4 anterior.
 
 ## Alterando a base de dados
 ### Criando modelo e migração
