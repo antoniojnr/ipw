@@ -114,6 +114,12 @@ Use as funções e constantes a seguir para configurar como o seu sketch. Você 
 
 ## Desenhando formas
 
+### `ellipse()`
+
+### `rect()`
+
+### `line()`
+
 ## Outras funções
 
 Consulte a referência da linguagem para mais informações: [https://p5js.org/reference](https://p5js.org/reference)

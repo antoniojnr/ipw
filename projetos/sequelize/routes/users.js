@@ -3,6 +3,7 @@ var models = require('../models');
 var bp = require('body-parser');
 var router = express.Router();
 var User = models.User;
+var Image = models.Image;
 
 router.use(bp.json());
 
@@ -12,7 +13,13 @@ router.post('', function(req, res) {
     lastName: req.body.lastName,
     email: req.body.email
   }).then(function(user) {
-    res.json(user);
+    Image.create({
+      userId: user.id,
+      fileId: 'teste',
+      text: 'comentario'
+    }).then(function(image) {
+      res.json(user);
+    })
   });
 });
 

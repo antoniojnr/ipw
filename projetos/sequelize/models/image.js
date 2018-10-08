@@ -1,21 +1,21 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING
+  const Image = sequelize.define('Image', {
+    userId: DataTypes.INTEGER,
+    fileId: DataTypes.STRING,
+    text: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        User.hasMany(models.Image, {
+        Image.belongsTo(models.User, {
           foreignKey: 'userId',
           onDelete: 'CASCADE'
         });
       }
     }
   });
-  User.associate = function(models) {
+  Image.associate = function(models) {
     // associations can be defined here
   };
-  return User;
+  return Image;
 };
