@@ -24,4 +24,41 @@ router.get('/:id', function(req, res) {
     });
 });
 
+router.get('', function(req, res) {
+  User
+    .all()
+    .then(function(users) {
+      res.json(users);
+    });
+})
+
+router.delete('/:id', function(req, res) {
+  User
+    .destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(function(user) {
+      res.json(user);
+    })
+});
+
+router.put('', function(req, res) {
+  User
+    .update({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email
+    }, {
+      where: {
+        id: req.body.id
+      }
+    })
+    .then(function(user) {
+      res.json(user);
+    })
+});
+
+
 module.exports = router;
