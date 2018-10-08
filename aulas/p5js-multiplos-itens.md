@@ -68,6 +68,10 @@ function draw() {
 }
 ```
 
+## Projetos relacionados a esta aula
+
+* [p5js-multiplos-objetos](https://github.com/antoniojnr/ipw/tree/master/projetos/p5js-multiplos-objetos)
+
 ## Próximo assunto
 
 ...
