@@ -68,6 +68,10 @@ function draw() {
 }
 ```
 
+## Próximo assunto
+
+...
+
 ## Exercício
 
 Crie uma animação simulando gotas caindo como a que é mostrada [neste vídeo](https://youtu.be/SLCJ0A8fdkg).
