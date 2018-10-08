@@ -109,3 +109,16 @@ Para refazer a migração, execute o comando listado em [Executando a migração
 <pre>
 node_modules\.bin\sequelize db:migrate:undo
 </pre>
+
+### Criando outros modelos
+
+O comando `sequelize model:generate` é usado para criar os modelos e migrações.
+
+Use a opção `--name` para definir o nome do seu modelo.
+
+Use a opção `--attributes` para definir os atributos do seu modelo, no formato `nome:tipo`.
+
+Por exemplo:
+<pre>
+node_modules\.bin\sequelize model:generate --name Image --attributes userId:integer,fileId:string,text:string
+</pre>
