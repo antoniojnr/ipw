@@ -120,6 +120,10 @@ Use as funções e constantes a seguir para configurar como o seu sketch. Você 
 
 ### `line()`
 
+## Próximo assunto
+
+[Representando estado de itens](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-estado.md)
+
 ## Outras funções
 
 Consulte a referência da linguagem para mais informações: [https://p5js.org/reference](https://p5js.org/reference)

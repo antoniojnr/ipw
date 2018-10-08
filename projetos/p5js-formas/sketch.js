@@ -1,11 +1,14 @@
-var x = 50;
-var y = 50;
+var x = 0;
+var y = 0;
 var xVel = 0;
 var yVel = 0;
 var lado = 80;
+
 function setup() {
   createCanvas(600, 400);
   background('#a7d8f9');
+  x = random(0, width - lado);
+  y = random(0, height - lado);
 }
 
 function draw() {
