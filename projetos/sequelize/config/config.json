@@ -2,8 +2,8 @@
   "development": {
     "username": "ipw",
     "password": "ipwpass",
-    "database": "ipw",
-    "host": "192.168.0.108",
+    "database": "sequelize",
+    "host": "10.5.53.230",
     "dialect": "postgres"
   },
   "test": {
