@@ -3,7 +3,7 @@
     "username": "ipw",
     "password": "ipwpass",
     "database": "sequelize",
-    "host": "10.5.53.230",
+    "host": "192.168.1.103",
     "dialect": "postgres"
   },
   "test": {

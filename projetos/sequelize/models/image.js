@@ -4,18 +4,15 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     fileId: DataTypes.STRING,
     text: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Image.belongsTo(models.User, {
-          foreignKey: 'userId',
-          onDelete: 'CASCADE'
-        });
-      }
-    }
-  });
+  }, { });
   Image.associate = function(models) {
-    // associations can be defined here
+    Image.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
+    });
+    Image.belongsToMany(models.Tag, {
+      through: 'ImageTags'
+    });
   };
   return Image;
 };

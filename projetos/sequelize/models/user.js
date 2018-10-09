@@ -4,18 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        User.hasMany(models.Image, {
-          foreignKey: 'userId',
-          onDelete: 'CASCADE'
-        });
-      }
-    }
-  });
+  }, { });
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Image, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
+    });
   };
   return User;
 };

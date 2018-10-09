@@ -25,8 +25,11 @@ router.post('', function(req, res) {
 
 router.get('/:id', function(req, res) {
   User
-    .findById(req.params.id)
+    .findById(req.params.id, { include: [ models.Image ] })
     .then(function(user) {
+      // user.getImages().then(function(images) {
+      //   console.log('images', images);
+      // });
       res.json(user);
     });
 });

@@ -70,7 +70,7 @@ node_modules\.bin\sequelize model:generate --name User --attributes firstName:st
 O comando acima emite uma saída indicando que um novo modelo e uma nova migração foram criados nos diretórios `models` e `migrations`.
 
 ### Executando a migração
-Para executar a migração e criar a(s) tabela(s) necessária(s) para armazenar o modelo criado, execute o comando:
+Para executar a migração e criar a(s) tabela(s) necessária(s) para armazenar o modelo criado, digite o comando:
 <pre>
 node_modules\.bin\sequelize db:migrate
 </pre>
