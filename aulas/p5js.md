@@ -1,14 +1,12 @@
-# Roteiro da aula
+# Olá p5.js
 
-## Olá p5.js
-
-### Apresentação
+## Apresentação
 
 p5.js é uma biblioteca JavaScript feita para tornar programação acessível a artistas, designers, educadores e iniciantes. A biblioteca possui um conjunto completo de funcionalidades para desenho e animação.
 
 Você pode utilizar um painel ou a página completa para criar suas animações.
 
-### Download
+## Download
 
 Baixe os arquivos necessários a partir do link: [https://p5js.org/download/](https://p5js.org/download/).
 
@@ -27,7 +25,7 @@ seu-projeto
 
 Iremos precisar, por enquanto, apenas do arquivo `p5.js`.
 
-### Criando a página
+## Criando a página
 
 No mesmo diretório do arquivo `p5.js`, crie uma página HTML vazia e salve como `index.html`. Na página, importe o arquivo, como mostrado a seguir:
 
@@ -45,7 +43,7 @@ No mesmo diretório do arquivo `p5.js`, crie uma página HTML vazia e salve como
 </html>
 ```
 
-### Criando um sketch
+## Criando um sketch
 
 Seu programa p5.js é criado em JavaScript. De acordo com as regras de organização de código aprendidas, você deve escrever seu código em um arquivo de extensão `.js` e importar no HTML.
 
@@ -76,7 +74,7 @@ Se você viu um círculo sobre uma página em branco, então deu tudo certo!
 
 O projeto completado nesta parte está [aqui](https://github.com/antoniojnr/ipw/tree/master/projetos/p5js-inicio).
 
-## Entendendo um sketch
+### Estrutura do sketch
 
 Um *sketch* é um arquivo de animação. Para definir um *sketch*, você, tipicamente, precisará definir duas funções: `setup()` e `draw()`.
 
