@@ -1,4 +1,55 @@
-# Desenhando múltiplos itens
+# Animações avançadas
+
+## Representando estado de itens
+
+O estado de um objeto desenhado em uma animação é dado por sua posição (coordenadas *x* e *y*) e outras propriedades que determinam como o objeto será animado (velocidade de movimento, tamanho do raio, tamanho do lado, entre outras). Alterar a posição a cada chamada do `draw()` faz com que o objeto se desloque durante a animação, independentemente de este ser uma elipse, retângulo ou triângulo.
+
+### Objetos em JavaScript
+
+Um objeto é uma coleção de propriedades e cada propriedade é uma associação entre um nome (também chamado de chave) e um valor.
+
+No sketch a seguir, o objeto na variável `item` representa o estado do objeto a ser desenhado. `item` é inicializado na linha 5 com o seguinte valor.
+
+```javascript
+item = {
+  x: width/2,
+  y: height/2,
+  raio: 20,
+  texto: 'Círculo',
+  cor: '#FF0090'
+};
+```
+
+No sketch, um círculo com o texto, raio e cor especificados segue o ponteiro do mouse. Você poderia pensar neste círculo como um personagem em um jogo, por exemplo, que possui várias propriedades, como roupa, vida, nível, quantidade de munição, etc. Essas propriedades poderiam ser representadas em um objeto.
+
+```javascript
+var item;
+
+function setup() {
+  createCanvas(400, 400);
+	item = {
+		x: width/2,
+		y: height/2,
+		raio: 20,
+		texto: 'Círculo',
+		cor: '#FF0090'
+	};
+}
+
+function draw() {
+  background(255);
+	fill(item.cor);
+	ellipse(item.x, item.y, item.raio * 2, item.raio * 2);
+	textAlign(CENTER);
+	text(item.texto, item.x, item.y + item.raio + 15);
+	item.x = mouseX;
+	item.y = mouseY;
+}
+```
+
+Modifique as propriedades do objeto ou o código para ver que resultado você obtém. No próximo assunto, veremos como representar os itens de uma animação como objetos nos ajuda a controlar o estado de cada um deles.
+
+## Múltiplos objetos em uma animação
 
 No tópico anterior, você aprendeu a representar o estado de um item de sua animação de uma forma auto-contida, em um objeto JavaScript.
 

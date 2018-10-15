@@ -110,18 +110,34 @@ Use as funções e constantes a seguir para configurar como o seu sketch. Você 
 
 `frameRate(fr)` define um novo valor para a quantidade de quadros por segundos desenhados. Para `frameRate(30)`, o programa tentará atualizar os quadros 30 vezes por segundo.
 
-## Desenhando formas
+## Desenhando texto e formas
+
 
 ### `ellipse()`
 
-### `rect()`
+`ellipse(x, y, r1, r2)` desenha uma elipse na posição de coordenadas `x` e `y`, e raios `r1` e `r2`.
 
 ### `line()`
+
+`line(x1, y1, x2, y2)` desenha uma linha do ponto (`x1`, `y1`) a (`x2`, `y2`).
+
+<pre>
+       ._________.
+ (x1,y1)         (x2,y2)
+</pre>
+
+### `rect()`
+
+`rect(x, y, l, a)` desenha um retângulo com o canto superior esquerdo posicionado no ponto (`x`, `y`), de largura `l` e altura `a`.
+
+### `text()`
+
+`text('texto', x, y)` desenha o `'texto'` nas coordenadas (`x`, `y`). É possível ajustar alinhamento (`textAlign()`), espaçamento entre linhas (`textLeading()`), tamanho (`textSize()`) e estilo – negrito, itálico ou normal (`textStyle()`). Saiba mais na [documentação](https://p5js.org/reference/) de cada função.
 
 ## Próximo assunto
 
 * [Tratando eventos](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-eventos.md)
-* [Representando estado de itens](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-estado.md)
+* [Animações avançadas](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-animacoes-avancadas.md)
 
 ## Outras funções
 

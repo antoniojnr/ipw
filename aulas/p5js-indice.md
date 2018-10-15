@@ -6,5 +6,7 @@
   * [Criando um sketch](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js.md#criando-um-sketch)
     * [Estrutura do sketch](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js.md#estrutura-do-sketch)
     * [Configuração do sketch](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js.md#configura%C3%A7%C3%A3o-do-sketch)
-  * [Desenhando formas](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js.md#desenhando-formas)
+  * [Desenhando texto e formas](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js.md#desenhando-texto-e-formas)
   * [Tratando eventos](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-eventos.md)
+* **[Animações avançadas](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-animacoes-avancadas.md)**
+  * []()
