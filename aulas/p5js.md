@@ -122,7 +122,8 @@ Use as funções e constantes a seguir para configurar como o seu sketch. Você 
 
 ## Próximo assunto
 
-[Representando estado de itens](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-estado.md)
+* [Tratando eventos](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-eventos.md)
+* [Representando estado de itens](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-estado.md)
 
 ## Outras funções
 
