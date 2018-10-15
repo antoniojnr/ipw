@@ -1,6 +1,6 @@
 # Animações avançadas
 
-## Representando estado de itens
+## Representando estado de um item
 
 O estado de um objeto desenhado em uma animação é dado por sua posição (coordenadas *x* e *y*) e outras propriedades que determinam como o objeto será animado (velocidade de movimento, tamanho do raio, tamanho do lado, entre outras). Alterar a posição a cada chamada do `draw()` faz com que o objeto se desloque durante a animação, independentemente de este ser uma elipse, retângulo ou triângulo.
 
@@ -119,15 +119,21 @@ function draw() {
 }
 ```
 
+### Funções de listas
+
+* `lista.push(x)`: adiciona o elemento `x` à lista;
+* `lista.splice(i, n)`: remove `n` elementos da lista a partir do índice `i`;
+
 ## Projetos relacionados a esta aula
 
 * [p5js-multiplos-objetos](https://github.com/antoniojnr/ipw/tree/master/projetos/p5js-multiplos-objetos)
+* [p5js-exercicio1](https://github.com/antoniojnr/ipw/tree/master/projetos/p5js-exercicio1)
 
 ## Próximo assunto
 
 ...
 
-## Exercício
+## Exercício 1
 
 Crie uma animação simulando gotas caindo como a que é mostrada [neste vídeo](https://youtu.be/SLCJ0A8fdkg).
 

@@ -9,4 +9,7 @@
   * [Desenhando texto e formas](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js.md#desenhando-texto-e-formas)
   * [Tratando eventos](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-eventos.md)
 * **[Animações avançadas](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-animacoes-avancadas.md)**
-  * []()
+  * [Representando o estado de um item](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-animacoes-avancadas.md#representando-estado-de-um-item)
+    * [Objetos em JavaScript](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-animacoes-avancadas.md#objetos-em-javascript)
+  * [Múltiplos objetos em uma animação](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-animacoes-avancadas.md#m%C3%BAltiplos-objetos-em-uma-anima%C3%A7%C3%A3o)
+  * [Listas](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-animacoes-avancadas.md#listas)
