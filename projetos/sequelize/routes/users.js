@@ -13,13 +13,7 @@ router.post('', function(req, res) {
     lastName: req.body.lastName,
     email: req.body.email
   }).then(function(user) {
-    Image.create({
-      userId: user.id,
-      fileId: 'teste',
-      text: 'comentario'
-    }).then(function(image) {
-      res.json(user);
-    })
+    res.json(user);
   });
 });
 
@@ -27,9 +21,6 @@ router.get('/:id', function(req, res) {
   User
     .findById(req.params.id, { include: [ models.Image ] })
     .then(function(user) {
-      // user.getImages().then(function(images) {
-      //   console.log('images', images);
-      // });
       res.json(user);
     });
 });
@@ -69,6 +60,5 @@ router.put('', function(req, res) {
       res.json(user);
     })
 });
-
 
 module.exports = router;

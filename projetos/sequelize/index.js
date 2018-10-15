@@ -2,8 +2,6 @@ var express = require('express');
 var app = express();
 var models = require('./models');
 var http = require('http');
-var user_routes = require('./routes/users');
-
 var bp = require('body-parser');
 
 app.use(function(req, res, next) {
@@ -13,7 +11,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/users', user_routes);
+app.use('/users', require('./routes/users'));
+app.use('/images', require('./routes/images'));
 
 var port = 3000;
 app.set('port', port);
