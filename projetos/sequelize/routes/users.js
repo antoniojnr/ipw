@@ -13,7 +13,15 @@ router.post('', function(req, res) {
     lastName: req.body.lastName,
     email: req.body.email
   }).then(function(user) {
-    res.json(user);
+    res.json({
+      success: true,
+      result: user
+    });
+  }).catch(function(error) {
+    res.json({
+      success: false,
+      result: error
+    });
   });
 });
 
@@ -22,6 +30,11 @@ router.get('/:id', function(req, res) {
     .findById(req.params.id, { include: [ models.Image ] })
     .then(function(user) {
       res.json(user);
+    }).catch(function(error) {
+      res.json({
+        success: false,
+        result: error
+      });
     });
 });
 
@@ -30,6 +43,11 @@ router.get('', function(req, res) {
     .all()
     .then(function(users) {
       res.json(users);
+    }).catch(function(error) {
+      res.json({
+        success: false,
+        result: error
+      });
     });
 })
 
@@ -42,7 +60,12 @@ router.delete('/:id', function(req, res) {
     })
     .then(function(user) {
       res.json(user);
-    })
+    }).catch(function(error) {
+      res.json({
+        success: false,
+        result: error
+      });
+    });
 });
 
 router.put('', function(req, res) {
@@ -55,10 +78,14 @@ router.put('', function(req, res) {
       where: {
         id: req.body.id
       }
-    })
-    .then(function(user) {
+    }).then(function(user) {
       res.json(user);
-    })
+    }).catch(function(error) {
+      res.json({
+        success: false,
+        result: error
+      });
+    });
 });
 
 module.exports = router;
