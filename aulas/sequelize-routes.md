@@ -163,3 +163,5 @@ Algumas considerações a serem feitas sobre o código acima:
 #### Outras rotas
 
 O módulo `users.js` completo está no projeto que pode ser encontrado [aqui]().
+
+## Projeto completo
