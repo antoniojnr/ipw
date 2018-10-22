@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="imageapp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="scripts/angular.min.js" charset="utf-8"></script>
+    <script src="scripts/angular-route.min.js" charset="utf-8"></script>
+    <script src="https://webdev-ifpb.appspot.com/script.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+    <script src="login.ctrl.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="scripts/dist/css/bootstrap.min.css">
+  </head>
+  <body ng-controller="LoginCtrl as c">
+    <button
+      type="button"
+      class="btn btn-primary"
+      ng-click="c.login()">
+      Fazer login
+    </button>
+  </body>
+</html>

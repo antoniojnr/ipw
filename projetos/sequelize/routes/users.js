@@ -4,8 +4,22 @@ var bp = require('body-parser');
 var router = express.Router();
 var User = models.User;
 var Image = models.Image;
+var axios = require('axios');
+var request = axios.create({
+  baseURL: 'https://backend-dot-webdev-ifpb.appspot.com'
+});
 
 router.use(bp.json());
+
+router.post('/login', function(req, res) {
+  request.get('/users/me', {
+    headers: {
+      authorization: 'Bearer ' + req.body.token
+    }
+  }).then(function(resultado) {
+    console.log(resultado);
+  });
+});
 
 router.post('', function(req, res) {
   User.create({

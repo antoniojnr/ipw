@@ -11,10 +11,14 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(express.static('./public'));
+app.use('/scripts', express.static('./node_modules/angular'));
+app.use('/scripts', express.static('./node_modules/angular-route'));
+app.use('/scripts', express.static('./node_modules/bootstrap'));
 app.use('/users', require('./routes/users'));
 app.use('/images', require('./routes/images'));
 
-var port = 3000;
+var port = 8082;
 app.set('port', port);
 
   /**
