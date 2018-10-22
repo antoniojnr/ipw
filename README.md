@@ -11,3 +11,4 @@ Conteúdo da disciplina de Introdução à Programação Web
 ### Aulas
 * [1 de outubro de 2018](https://github.com/antoniojnr/ipw/blob/master/aulas/sequelize-cli.md)
 * [8 de outubro de 2018](https://github.com/antoniojnr/ipw/blob/master/aulas/sequelize-models.md)
+* [22 de outubro de 2018](https://github.com/antoniojnr/ipw/blob/master/aulas/sequelize-routes.md)

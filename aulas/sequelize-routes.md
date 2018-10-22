@@ -81,7 +81,7 @@ router.delete('/:id', function(req, res) {
 module.exports = router;
 ```
 
-Com as rotas definidas acima, importe este módulo contendo as rotas de usuário no `index.js`, seguindo os passos da seção [Importando o novo módulo](). Supondo que a nossa aplicação está rodando em `http://localhost:3000`, agora temos as seguintes rotas.
+Com as rotas definidas acima, importe este módulo contendo as rotas de usuário no `index.js`, seguindo os passos da seção [Importando o novo módulo](https://github.com/antoniojnr/ipw/blob/master/aulas/sequelize-routes.md#importando-o-novo-m%C3%B3dulo). Supondo que a nossa aplicação está rodando em `http://localhost:3000`, agora temos as seguintes rotas.
 
 | Método | Rota | Função |
 | --- | --- | --- |
@@ -162,6 +162,42 @@ Algumas considerações a serem feitas sobre o código acima:
 
 #### Outras rotas
 
-O módulo `users.js` completo está no projeto que pode ser encontrado [aqui]().
+O módulo `users.js` completo está no projeto que pode ser encontrado [aqui](https://github.com/antoniojnr/ipw/tree/master/projetos/sequelize).
+
+#### Exercício
+
+Construa as rotas a seguir, incluindo-as em seus módulos apropriados. Consulte a [documentação do Sequelize](https://sequelize.readthedocs.io/en/v3/docs/querying/) para mais informações, especialmente sobre como criar o relacionamento entre modelos.
+
+Continue o projeto a partir da rota de login feita em sala.
+
+| **Método:** POST |
+| --- |
+|**Rota:** http://localhost:3000/users/login|
+|**Descrição:** Fazer login ou criar um novo usuário |
+|**Parâmetros no corpo da requisição:** `token`: token de autenticação da API externa|
+|**Parâmetros da resposta:** O perfil do usuário |
+
+| **Método:** POST |
+| --- |
+|**Rota:** http://localhost:3000/images/:id/tags|
+|**Descrição:** Criar uma nova tag para uma imagem|
+|**Parâmetros no corpo da requisição:** `text`: texto da tag|
+|**Parâmetros da resposta:**  A tag inserida|
+
+| **Método:** POST |
+| --- |
+| **Rota:** http://localhost:3000/images/:id/comments |
+| **Descrição:** Criar um novo comentário na imagem |
+| **Parâmetros no corpo da requisição:** `text`: texto do comentário |
+| **Parâmetros da resposta:** O comentário criado |
+
+| **Método:** GET |
+| --- |
+| **Rota:** http://localhost:3000/images/:id |
+| **Descrição:** Obter informações de uma imagem |
+| **Parâmetros no corpo da requisição:** nenhum |
+| **Parâmetros da resposta:** `file_id`: ID do arquivo da imagem; `user_id`: ID do proprietário da imagem; `text`: Título descritivo da imagem; `comments`: Array de comentários da imagem. Cada comentário é um objeto com os parâmetros: `text`, `timestamp`, `author_id` e `author_name`; `tags`: Array de tags da imagem. Cada tag é uma string |
 
 ## Projeto completo
+
+* [sequelize](https://github.com/antoniojnr/ipw/tree/master/projetos/sequelize)
