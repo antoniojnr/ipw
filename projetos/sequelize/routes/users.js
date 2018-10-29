@@ -17,7 +17,13 @@ router.post('/login', function(req, res) {
       authorization: 'Bearer ' + req.body.token
     }
   }).then(function(resultado) {
-    console.log(resultado);
+    User.create({
+      firstName: '',
+      lastName: '',
+      email: resultado.data.username
+    }).then(function(resultado) {
+      res.json(resultado);
+    });
   });
 });
 

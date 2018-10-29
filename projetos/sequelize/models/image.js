@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     Image.belongsToMany(models.Tag, {
       through: 'ImageTags'
     });
+    Image.hasMany(models.Like, {
+      foreignKey: 'imageId',
+      onDelete: 'CASCADE'
+    });
   };
   return Image;
 };
