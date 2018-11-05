@@ -9,18 +9,22 @@ app.use(bp.urlencoded({
 app.use(express.static('./public'));
 
 app.post('/maiusculo', function(req, res) {
-  res.send(req.body);
+  res.send(req.query);
 });
 
-app.get('/calc/:op1/:op2/tipo/:oper', function(req, res) {
-  var a = parseInt(req.params.op1);
-  var b = parseInt(req.params.op2);
+// fahrenheit
 
-  if (req.params.oper == "soma") {
+app.post('/calc', function(req, res) {
+  var a = parseInt(req.body.op1);
+  var b = parseInt(req.body.op2);
+
+  console.log(req.body);
+
+  if (req.body.oper == "soma") {
     res.send("Resultado: " + (a + b));
-  } else if (req.params.oper == "sub") {
+  } else if (req.body.oper == "sub") {
     res.send("Resultado: " + (a - b));
-  } else if (req.params.oper == "mult") {
+  } else if (req.body.oper == "mult") {
     res.send("Resultado: " + (a * b));
   } else {
     res.send("Resultado: " + (a / b));

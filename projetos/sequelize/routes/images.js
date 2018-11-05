@@ -29,8 +29,9 @@ router.post('', function(req, res) {
 
 router.get('/:id', function(req, res) {
   Image
-    .findById(req.params.id, { include: [ models.Like ] })
+    .findById(req.params.id, { include: [ Like, Tag ] })
     .then(function(image) {
+      console.log('====>', req.usuario);
       res.json(image);
     });
 });
@@ -43,21 +44,36 @@ router.post('/:id/tags', function(req, res) {
       }
     })
     .then(function(tags) {
-      res.json(tags);
+      if (tags.length == 0) {
+        Tag
+          .create({
+            text: req.body.text
+          })
+          .then(function(tag) {
+            Image
+              .findById(req.params.id)
+              .then(function(image) {
+                image.addTag(tag);
+                image.save();
+              });
+            res.json(tag);
+          });
+      } else {
+        Tag.find({
+          where: {
+            text: req.body.text
+          }
+        }).then(function(tag) {
+          Image
+            .findById(req.params.id)
+            .then(function(image) {
+              image.addTag(tag);
+              image.save();
+            });
+          res.json(tag);
+        })
+      }
     });
-  // Tag
-  //   .create({
-  //     text: req.body.text
-  //   })
-  //   .then(function(tag) {
-  //     Image
-  //       .findById(req.params.id)
-  //       .then(function(image) {
-  //         image.addTag(tag);
-  //         image.save();
-  //       });
-  //     res.json(tag);
-  //   });
 });
 
 router.post('/:id/likes', function(req, res) {

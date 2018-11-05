@@ -6,7 +6,7 @@
   </head>
   <body>
     <form
-      action="http://localhost:3000/maiusculo"
+      action="http://localhost:3000/calc"
       method="post">
       <input type="number" name="op1" value="">
       <input type="number" name="op2" value="">
@@ -18,5 +18,23 @@
       </select>
       <button type="submit">Enviar</button>
     </form>
+    <div class="">
+      <form
+        action="http://localhost:3000/calc"
+        method="post">
+        <input type="number" name="op1" value="">
+        <select name="origem">
+          <option value="soma">C</option>
+          <option value="sub">F</option>
+          <option value="mult">K</option>
+        </select>
+        <select name="destino">
+          <option value="soma">C</option>
+          <option value="sub">F</option>
+          <option value="mult">K</option>
+        </select>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
   </body>
 </html>

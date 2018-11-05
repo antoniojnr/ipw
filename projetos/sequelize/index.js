@@ -11,6 +11,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(function(req, res, next) {
+  req.usuario = "Teste";
+  next();
+});
+
 app.use(express.static('./public'));
 app.use('/scripts', express.static('./node_modules/angular'));
 app.use('/scripts', express.static('./node_modules/angular-route'));

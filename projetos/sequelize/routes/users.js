@@ -23,6 +23,24 @@ router.post('/login', function(req, res) {
       email: resultado.data.username
     }).then(function(resultado) {
       res.json(resultado);
+    }).catch(function(error) {
+      if (error.name === 'SequelizeUniqueConstraintError') {
+        User
+          .find({
+            where: {
+              email: resultado.data.username
+            },
+            include: [ Image ]
+          })
+          .then(function(user) {
+            res.json(user);
+          }).catch(function(error) {
+            res.json({
+              success: false,
+              result: error
+            });
+          });
+      }
     });
   });
 });
