@@ -11,11 +11,27 @@
     <link rel="stylesheet" href="scripts/dist/css/bootstrap.min.css">
   </head>
   <body ng-controller="LoginCtrl as c">
-    <button
-      type="button"
-      class="btn btn-primary"
-      ng-click="c.login()">
-      Fazer login
-    </button>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <button
+            type="button"
+            class="btn btn-primary"
+            ng-click="c.login()">
+            Fazer login
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>{{ c.perfil.email }}</h5>
+        </div>
+      </div>
+      <div class="row" ng-repeat="i in c.perfil.Images">
+        <div class="col">
+          <img ng-src="https://backend-dot-webdev-ifpb.appspot.com/img/{{ i.fileId }}" alt="">
+        </div>
+      </div>
+    </div>
   </body>
 </html>

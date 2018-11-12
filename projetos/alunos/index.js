@@ -49,18 +49,63 @@ app.get('/alunos', function(req, res) {
           curso: aluno[5],
           turma: aluno[3],
           media: aluno[4]
-        });  
+        });
       }
     }
 
     res.json(result);
-  })
+  });
 });
 // GET /alunos/:matricula
+app.get('/alunos/:matricula', function(req, res) {
+  var mat = req.params.matricula;
+  fs.readFile(DB_PATH, function(err, buffer) {
+    var registros = buffer.toString().split('\n');
+
+    for (var r of registros) {
+      if (r !== '') {
+        var aluno = r.split(' ');
+        if (mat === aluno[0]) {
+          res.json({
+            matricula: aluno[0],
+            nome: aluno[1],
+            sobrenome: aluno[2],
+            curso: aluno[5],
+            turma: aluno[3],
+            media: aluno[4]
+          });
+          break;
+        }
+      }
+    }
+
+    res.json({});
+  })
+});
 // Atualizar aluno
 // PUT/PATCH /alunos
 // Remover aluno
 // DELETE /alunos/:matricula
+app.delete('/alunos/:matricula', function(req, res) {
+  var mat = req.params.matricula;
+  fs.readFile(DB_PATH, function(err, buffer) {
+    var registros = buffer.toString().split('\n');
+    var novoCont = "";
+
+    for (var r of registros) {
+      if (r !== '') {
+        var aluno = r.split(' ');
+        if (mat !== aluno[0]) {
+          novoCont = novoCont + r + '\n';
+        }
+      }
+    }
+
+    fs.writeFile(DB_PATH, novoCont, function(err) { });
+
+    res.json(200);
+  })
+});
 
 app.listen(3000, function() {
   console.log('Executando na porta 3000');

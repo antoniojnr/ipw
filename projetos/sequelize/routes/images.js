@@ -8,6 +8,9 @@ var request = axios.create({
   baseURL: 'https://backend-dot-webdev-ifpb.appspot.com'
 });
 
+// Imagem cachorro
+// 37ed2053-93eb-43a7-8efc-17dc1cf929a7
+
 var User = models.User;
 var Image = models.Image;
 var Tag = models.Tag;
@@ -28,10 +31,13 @@ router.post('', function(req, res) {
 });
 
 router.get('/:id', function(req, res) {
+  if (!req.usuario) {
+    res.send(403);
+  }
+
   Image
     .findById(req.params.id, { include: [ Like, Tag ] })
     .then(function(image) {
-      console.log('====>', req.usuario);
       res.json(image);
     });
 });
@@ -78,59 +84,56 @@ router.post('/:id/tags', function(req, res) {
 
 router.post('/:id/likes', function(req, res) {
   // begin - requisição para obter perfil
-  request.get('/users/me', {
-    headers: {
-      authorization: req.headers.authorization
+  if (!req.usuario) {
+    res.send(403);
+  }
+
+  // begin - requisição para encontrar usuário
+  User.find({
+    where: {
+      email: req.usuario.username
     }
-  }).then(function(resultado) {
-    // begin - requisição para encontrar usuário
-    User.find({
-      where: {
-        email: resultado.data.username
-      }
-    }).then(function(user) {
-      // begin - requisição para criar Like
-      Like.create({
-        userId: user.id,
-        imageId: req.params.id
-      }).then(function(like) {
-        res.send(200);
-      }).catch(function(error) {
-        if (error.name === 'SequelizeUniqueConstraintError') {
-          // begin - requisição para remover Like
-          Like
-            .destroy({
-              where: {
-                userId: user.id,
-                imageId: req.params.id
-              }
-            })
-            .then(function(user) {
-              res.send(200);
-            }).catch(function(error) {
-              res.json({
-                success: false,
-                result: error
-              });
+  }).then(function(user) {
+    // begin - requisição para criar Like
+    Like.create({
+      userId: user.id,
+      imageId: req.params.id
+    }).then(function(like) {
+      res.send(200);
+    }).catch(function(error) {
+      if (error.name === 'SequelizeUniqueConstraintError') {
+        // begin - requisição para remover Like
+        Like
+          .destroy({
+            where: {
+              userId: user.id,
+              imageId: req.params.id
+            }
+          })
+          .then(function(user) {
+            res.send(200);
+          }).catch(function(error) {
+            res.json({
+              success: false,
+              result: error
             });
-            // end - requisição para remover Like
-        } else if (error.name === 'SequelizeForeignKeyConstraintError') {
-          res.json({
-            success: false,
-            message: 'A imagem não existe'
           });
-        } else {
-          res.json({
-            success: false,
-            message: 'Erro desconhecido'
-          });
-        }
-      });
-      // end - requisição para criar Like
+          // end - requisição para remover Like
+      } else if (error.name === 'SequelizeForeignKeyConstraintError') {
+        res.json({
+          success: false,
+          message: 'A imagem não existe'
+        });
+      } else {
+        res.json({
+          success: false,
+          message: 'Erro desconhecido'
+        });
+      }
     });
-    // end - requisição para encontrar usuário
+    // end - requisição para criar Like
   });
-  // end - requisição para obter perfil
+  // end - requisição para encontrar usuário
 });
 
 

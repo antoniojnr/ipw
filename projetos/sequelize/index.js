@@ -3,6 +3,10 @@ var app = express();
 var models = require('./models');
 var http = require('http');
 var bp = require('body-parser');
+var axios = require('axios');
+var request = axios.create({
+  baseURL: 'https://backend-dot-webdev-ifpb.appspot.com'
+});
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -12,8 +16,16 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
-  req.usuario = "Teste";
-  next();
+  request.get('/users/me', {
+    headers: {
+      authorization: req.headers.authorization
+    }
+  }).then(function(resultado) {
+    req.usuario = resultado.data;
+    next();
+  }).catch(function(error) {
+    next();
+  });
 });
 
 app.use(express.static('./public'));
