@@ -20,7 +20,7 @@ router.use(bp.json());
 
 router.post('', function(req, res) {
   Image.create({
-    userId: req.body.userId,
+    userId: req.usuario.id,
     fileId: req.body.fileId,
     text: req.body.text
   }).then(function(image) {
@@ -31,12 +31,21 @@ router.post('', function(req, res) {
 });
 
 router.get('/:id', function(req, res) {
+  console.log(req.usuario);
+
   if (!req.usuario) {
     res.send(403);
+    return;
   }
 
   Image
-    .findById(req.params.id, { include: [ Like, Tag ] })
+    .findById(req.params.id, { include: [
+      Like,
+      {
+        model: Tag,
+        attributes: ['text']
+      }]
+    })
     .then(function(image) {
       res.json(image);
     });

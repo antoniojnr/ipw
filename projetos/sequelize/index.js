@@ -3,6 +3,7 @@ var app = express();
 var models = require('./models');
 var http = require('http');
 var bp = require('body-parser');
+var User = models.User;
 var axios = require('axios');
 var request = axios.create({
   baseURL: 'https://backend-dot-webdev-ifpb.appspot.com'
@@ -21,9 +22,21 @@ app.use(function(req, res, next) {
       authorization: req.headers.authorization
     }
   }).then(function(resultado) {
-    req.usuario = resultado.data;
-    next();
+    User
+      .find({
+        where: {
+          email: resultado.data.username
+        }
+      })
+      .then(function(user) {
+        req.usuario = user;
+        next();
+      }).catch(function(error) {
+        console.log(error);
+        next();
+      });
   }).catch(function(error) {
+    console.log(error);
     next();
   });
 });
