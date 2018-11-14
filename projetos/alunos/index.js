@@ -36,19 +36,20 @@ app.post('/alunos', function(req, res) {
 // GET /alunos
 app.get('/alunos', function(req, res) {
   fs.readFile(DB_PATH, function(err, buffer) {
-    var registros = buffer.toString().split('\n');
+    var linhas = buffer.toString().split('\n');
     var result = [];
 
-    for (var r of registros) {
-      if (r !== '') {
-        var aluno = r.split(' ');
+    for (var linha of linhas) {
+      if (linha !== '') {
+        var aluno = linha.split(' ');
+
         result.push({
           matricula: aluno[0],
           nome: aluno[1],
           sobrenome: aluno[2],
-          curso: aluno[5],
           turma: aluno[3],
-          media: aluno[4]
+          media: aluno[4],
+          curso: aluno[5]
         });
       }
     }
@@ -56,6 +57,7 @@ app.get('/alunos', function(req, res) {
     res.json(result);
   });
 });
+
 // GET /alunos/:matricula
 app.get('/alunos/:matricula', function(req, res) {
   var mat = req.params.matricula;
@@ -65,6 +67,7 @@ app.get('/alunos/:matricula', function(req, res) {
     for (var r of registros) {
       if (r !== '') {
         var aluno = r.split(' ');
+        console.log(aluno);
         if (mat === aluno[0]) {
           res.json({
             matricula: aluno[0],
@@ -74,7 +77,7 @@ app.get('/alunos/:matricula', function(req, res) {
             turma: aluno[3],
             media: aluno[4]
           });
-          break;
+          return;
         }
       }
     }
@@ -82,8 +85,7 @@ app.get('/alunos/:matricula', function(req, res) {
     res.json({});
   })
 });
-// Atualizar aluno
-// PUT/PATCH /alunos
+
 // Remover aluno
 // DELETE /alunos/:matricula
 app.delete('/alunos/:matricula', function(req, res) {
@@ -94,6 +96,8 @@ app.delete('/alunos/:matricula', function(req, res) {
 
     for (var r of registros) {
       if (r !== '') {
+        console.log(novoCont);
+        console.log('');
         var aluno = r.split(' ');
         if (mat !== aluno[0]) {
           novoCont = novoCont + r + '\n';
@@ -107,6 +111,11 @@ app.delete('/alunos/:matricula', function(req, res) {
   })
 });
 
+// Atualizar aluno
+// PUT /alunos
+
+// Busca avançada (nome/serie/curso)
+// GET /alunos?campo=curso&valor=Informática
 app.listen(3000, function() {
   console.log('Executando na porta 3000');
 })
