@@ -4,6 +4,8 @@ var bp = require('body-parser');
 var router = express.Router();
 var User = models.User;
 var Image = models.Image;
+var Like = models.Like;
+var Tag = models.Tag;
 var axios = require('axios');
 var request = axios.create({
   baseURL: 'https://backend-dot-webdev-ifpb.appspot.com'
@@ -21,8 +23,8 @@ router.post('/login', function(req, res) {
       firstName: '',
       lastName: '',
       email: resultado.data.username
-    }).then(function(resultado) {
-      res.json(resultado);
+    }).then(function(user) {
+      res.json(user);
     }).catch(function(error) {
       if (error.name === 'SequelizeUniqueConstraintError') {
         User
@@ -30,7 +32,10 @@ router.post('/login', function(req, res) {
             where: {
               email: resultado.data.username
             },
-            include: [ Image ]
+            include: [ {
+              model: Image,
+              include: [ Like, Tag ]
+            } ]
           })
           .then(function(user) {
             res.json(user);

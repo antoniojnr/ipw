@@ -29,7 +29,12 @@
       </div>
       <div class="row" ng-repeat="i in c.perfil.Images">
         <div class="col">
-          <img ng-src="https://backend-dot-webdev-ifpb.appspot.com/img/{{ i.fileId }}" alt="">
+          <img class="d-block" ng-src="https://backend-dot-webdev-ifpb.appspot.com/img/{{ i.fileId }}" alt="">
+          <button
+            class="d-block btn btn-primary"
+            ng-click="c.like(i.id)">
+            Like
+          </button>
         </div>
       </div>
     </div>

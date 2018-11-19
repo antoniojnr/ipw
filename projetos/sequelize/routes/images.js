@@ -19,6 +19,11 @@ var Like = models.Like;
 router.use(bp.json());
 
 router.post('', function(req, res) {
+  if (!req.usuario) {
+    res.send(403);
+    return;
+  }
+
   Image.create({
     userId: req.usuario.id,
     fileId: req.body.fileId,
@@ -100,9 +105,10 @@ router.post('/:id/likes', function(req, res) {
   // begin - requisição para encontrar usuário
   User.find({
     where: {
-      email: req.usuario.username
+      email: req.usuario.email
     }
   }).then(function(user) {
+
     // begin - requisição para criar Like
     Like.create({
       userId: user.id,

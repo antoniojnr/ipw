@@ -16,10 +16,13 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(bp.json());
+
 app.use(function(req, res, next) {
+
   request.get('/users/me', {
     headers: {
-      authorization: req.headers.authorization
+      authorization: (req.headers.authorization || req.body.token)
     }
   }).then(function(resultado) {
     User
@@ -29,14 +32,15 @@ app.use(function(req, res, next) {
         }
       })
       .then(function(user) {
-        req.usuario = user;
+        console.log('=======', user.dataValues);
+        req.usuario = user.dataValues;
         next();
       }).catch(function(error) {
         console.log(error);
         next();
       });
   }).catch(function(error) {
-    console.log(error);
+    console.log(error.data);
     next();
   });
 });

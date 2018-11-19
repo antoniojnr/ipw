@@ -116,6 +116,7 @@ app.delete('/alunos/:matricula', function(req, res) {
 
 // Busca avançada (nome/serie/curso)
 // GET /alunos?campo=curso&valor=Informática
+
 app.listen(3000, function() {
   console.log('Executando na porta 3000');
 })

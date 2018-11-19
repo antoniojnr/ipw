@@ -20,6 +20,20 @@ angular
         });
     }
 
+    this.like = function(id) {
+      var token = localStorage['token'];
+      $http
+        .post(`http://localhost:8082/images/${id}/likes`, {},
+          {
+            headers: {
+              authorization: "Bearer " + token
+            }
+          })
+        .then(function(res) {
+          console.log(res.data);
+        });
+    }
+
     if (localStorage['token']) {
       self.myLogin(localStorage['token']);
     }
