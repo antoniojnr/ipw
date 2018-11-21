@@ -7,6 +7,8 @@ var app = express();
 const DB_PATH = 'alunos.db';
 
 app.use(bp.json());
+app.use(express.static('./public'));
+app.use(express.static('./node_modules/angular'));
 
 // Rotas
 // Criar aluno
@@ -113,9 +115,46 @@ app.delete('/alunos/:matricula', function(req, res) {
 
 // Atualizar aluno
 // PUT /alunos
+// ...
+
+function verificaCondicao(campo, valor, aluno) {
+  var campos = [
+    'matricula', 'nome', 'sobrenome',
+    'turma', 'media', 'curso'
+  ];
+
+  return aluno[campos.indexOf(campo)] === valor;
+}
 
 // Busca avançada (nome/serie/curso)
 // GET /alunos?campo=curso&valor=Informática
+app.get('/busca', function(req, res) {
+  var campo = req.query.campo;
+  var valor = req.query.valor;
+
+  fs.readFile(DB_PATH, function(err, buffer) {
+    var registros = buffer.toString().split('\n');
+    var resultado = [];
+    for (var r of registros) {
+      if (r !== '') {
+        var aluno = r.split(' ');
+
+        if (verificaCondicao(campo, valor, aluno)) {
+          resultado.push({
+            matricula: aluno[0],
+            nome: aluno[1],
+            sobrenome: aluno[2],
+            curso: aluno[5],
+            turma: aluno[3],
+            media: aluno[4]
+          });
+        }
+      }
+    }
+
+    res.json(resultado);
+  })
+});
 
 app.listen(3000, function() {
   console.log('Executando na porta 3000');

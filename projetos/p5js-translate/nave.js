@@ -3,7 +3,7 @@ function Nave(pos) {
   this.pos = pos;
   this.a = 0;
   this.vel = createVector(0, 0);
-  this.bullets = [];
+  this.balas = [];
   this.turbina = [];
 
   this.acelerar = function() {
@@ -23,8 +23,8 @@ function Nave(pos) {
 
   this.desenhar = function() {
     // Desenhando as balas
-    for (var i = this.bullets.length - 1; i >= 0; i--) {
-      var b = this.bullets[i];
+    for (var i = this.balas.length - 1; i >= 0; i--) {
+      var b = this.balas[i];
 
       fill(255);
       ellipse(b.pos.x, b.pos.y, 4, 4);
@@ -32,7 +32,7 @@ function Nave(pos) {
 
       if (b.pos.x < 0 || b.pos.x > width
         || b.pos.y < 0 || b.pos.y > height) {
-          this.bullets.splice(i, 1);
+          this.balas.splice(i, 1);
       }
     }
 
@@ -69,7 +69,7 @@ function Nave(pos) {
     fill(0);
     triangle(0, -this.d, this.d, this.d, -this.d, this.d);
     pop();
-    
+
     this.tratarBordas();
   }
 
@@ -79,7 +79,7 @@ function Nave(pos) {
   }
 
   this.atirar = function() {
-    this.bullets.push({
+    this.balas.push({
       pos: createVector(this.pos.x, this.pos.y),
       vel: p5.Vector.fromAngle(radians(this.a - 90)).mult(2)
     });
