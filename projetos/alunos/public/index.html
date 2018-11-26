@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" ng-app="alunos">
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script src="angular.min.js" charset="utf-8"></script>
+    <script src="angular.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
   </head>
-  <body>
-
+  <body ng-controller="MainCtrl as c">
+    <h1>Criar</h1>
+    <div class="">
+      <form ng-submit="c.cadastrar()">
+        <div>
+          <input type="number" name="matricula" ng-model="c.aluno.matricula" value="" placeholder="Matrícula">
+        </div>
+        <div>
+          <input type="text" name="nome" ng-model="c.aluno.nome" value="" placeholder="Nome">
+        </div>
+        <div>
+          <input type="text" name="sobrenome" ng-model="c.aluno.sobrenome" value="" placeholder="Sobrenome">
+        </div>
+        <div>
+          <input type="number" name="turma" ng-model="c.aluno.turma" value="" placeholder="Turma">
+        </div>
+        <div>
+          <input type="text" name="curso" ng-model="c.aluno.curso" value="" placeholder="Curso">
+        </div>
+        <div>
+          <input type="number" name="media" ng-model="c.aluno.media" value="" placeholder="Média">
+        </div>
+        <div>
+          <button type="submit">Salvar</button>
+        </div>
+      </form>
+    </div>
+    <h1>Listar</h1>
+    <table>
+      <tr>
+        <th>Matrícula</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Turma</th>
+        <th>Curso</th>
+        <th>Média</th>
+      </tr>
+      <tr ng-repeat="a in c.alunos">
+        <td ng-bind="a.matricula"></td>
+        <td ng-bind="a.nome"></td>
+        <td ng-bind="a.sobrenome"></td>
+        <td ng-bind="a.turma"></td>
+        <td ng-bind="a.curso"></td>
+        <td ng-bind="a.media"></td>
+      </tr>
+    </table>
+    <h1>Editar</h1>
   </body>
 </html>

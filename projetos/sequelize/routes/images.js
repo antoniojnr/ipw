@@ -10,6 +10,8 @@ var request = axios.create({
 
 // Imagem cachorro
 // 37ed2053-93eb-43a7-8efc-17dc1cf929a7
+// daae1291-1044-48d3-af66-fd1bcb336de4
+// 5715f727-3bf4-461e-ad44-492c174c9ba0
 
 var User = models.User;
 var Image = models.Image;
