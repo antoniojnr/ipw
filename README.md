@@ -5,6 +5,8 @@ Conteúdo da disciplina de Introdução à Programação Web
 **[Índice](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-indice.md)**
 ### Aulas
 * [1 de outubro de 2018](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js.md)
+### Projeto
+* [Descrição do projeto](https://github.com/antoniojnr/ipw/blob/master/aulas/p5js-projeto.md)
 
 ## 3° ano
 **[Índice](https://github.com/antoniojnr/ipw/blob/master/aulas/sequelize-indice.md)**
