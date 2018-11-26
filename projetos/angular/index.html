@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="images">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="MainCtrl as c">
+    <div class="">
+      {{ c.profile.firstName + " " + c.profile.lastName }}
+    </div>
+    <div ng-repeat="img in c.profile.images">
+      <div class="">
+        <img ng-src="{{img.url}}" alt="">
+      </div>
+      <div class="">
+        <button>Curtir</button> {{ img.likes[0] + " e mais " + (img.likes.length - 1) + " pessoas curtiram" }} {{ img.tags }}
+      </div>
+    </div>
+  </body>
+</html>
