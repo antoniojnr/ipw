@@ -42,6 +42,7 @@
         <th>Turma</th>
         <th>Curso</th>
         <th>Média</th>
+        <th></th>
       </tr>
       <tr ng-repeat="a in c.alunos">
         <td ng-bind="a.matricula"></td>
@@ -50,8 +51,34 @@
         <td ng-bind="a.turma"></td>
         <td ng-bind="a.curso"></td>
         <td ng-bind="a.media"></td>
+        <td><button ng-click="c.editar(a)">Editar</button></td>
       </tr>
     </table>
-    <h1>Editar</h1>
+    <div ng-show="c.editando">
+      <h1>Editar</h1>
+      <form ng-submit="c.salvar()">
+        <div>
+          <input type="number" name="matricula" ng-model="c.alunoEdit.matricula" value="" placeholder="Matrícula">
+        </div>
+        <div>
+          <input type="text" name="nome" ng-model="c.alunoEdit.nome" value="" placeholder="Nome">
+        </div>
+        <div>
+          <input type="text" name="sobrenome" ng-model="c.alunoEdit.sobrenome" value="" placeholder="Sobrenome">
+        </div>
+        <div>
+          <input type="number" name="turma" ng-model="c.alunoEdit.turma" value="" placeholder="Turma">
+        </div>
+        <div>
+          <input type="text" name="curso" ng-model="c.alunoEdit.curso" value="" placeholder="Curso">
+        </div>
+        <div>
+          <input type="number" name="media" ng-model="c.alunoEdit.media" value="" placeholder="Média">
+        </div>
+        <div>
+          <button type="submit">Salvar</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

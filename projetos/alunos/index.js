@@ -115,7 +115,39 @@ app.delete('/alunos/:matricula', function(req, res) {
 
 // Atualizar aluno
 // PUT /alunos
-// ...
+app.put('/alunos', function(req, res) {
+
+  fs.readFile(DB_PATH, function(err, buffer) {
+    var registros = buffer.toString().split('\n');
+    var novoCont = "";
+    var mat = req.body.matricula;
+    
+    for (var r of registros) {
+      if (r !== '') {
+        var aluno = r.split(' ');
+        console.log(mat, aluno[0]);
+        if (mat == aluno[0]) {
+          var mat = req.body.matricula,
+              nom = req.body.nome,
+              sob = req.body.sobrenome,
+              tur = req.body.turma,
+              med = req.body.media,
+              cur = req.body.curso;
+          var linha = `${mat} ${nom} ${sob} ${tur} ${med} ${cur}\n`;
+          novoCont = linha + '\n';
+
+        } else {
+          novoCont = novoCont + r + '\n';
+        }
+
+      }
+    }
+
+    fs.writeFile(DB_PATH, novoCont, function(err) { });
+
+    res.json(200);
+  })
+});
 
 function verificaCondicao(campo, valor, aluno) {
   var campos = [

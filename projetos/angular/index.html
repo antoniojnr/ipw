@@ -15,7 +15,9 @@
         <img ng-src="{{img.url}}" alt="">
       </div>
       <div class="">
-        <button>Curtir</button> {{ img.likes[0] + " e mais " + (img.likes.length - 1) + " pessoas curtiram" }} {{ img.tags }}
+        <button ng-click="c.like(img)">Curtir</button> {{ c.getLikes(img) }}
+        <span ng-repeat="t in img.tags"><a href="{{ t }}">#{{ t }}</a> </span>
+        <input ng-show="c.editando" ng-model="c.valor" type="text"><button ng-click="c.editar(img)">Editar</button>
       </div>
     </div>
   </body>

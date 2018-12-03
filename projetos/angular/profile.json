@@ -8,9 +8,18 @@
       "url":"https://backend-dot-webdev-ifpb.appspot.com/img/37ed2053-93eb-43a7-8efc-17dc1cf929a7",
       "text":"Cachorro",
       "likes":[
-        "antonio", "josesilva"
+        "josesilva", "fulano", "antonio"
       ],
       "tags":[ "cachorro", "osso", "legal" ]
+    },
+    {
+      "owner": "antonio",
+      "url":"https://backend-dot-webdev-ifpb.appspot.com/img/37ed2053-93eb-43a7-8efc-17dc1cf929a7",
+      "text":"Cachorro",
+      "likes":[
+        "abc", "cde", "def"
+      ],
+      "tags":[ "tag1", "tag2", "tag3" ]
     }
   ]
 }
