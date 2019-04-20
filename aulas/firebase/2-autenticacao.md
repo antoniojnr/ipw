@@ -31,3 +31,36 @@ Habilite o método de autenticação, clicando no botão "Enable", insira seu em
 Pronto. Ao retornar para a lista de provedores de autenticação, você verá que a autenticação pelo Google estará habilitada.
 
 ## Configurando provedores de autenticação na aplicação
+
+Vamos organizar o projeto para inserir uma interface com o botão "Fazer login com Google", para que os usuários de nossa aplicação possam se autenticar, sem a necessidade de criarmos um serviço de autenticação do zero.
+
+Antes de tudo, modificaremos o arquivo *public/index.html* para retirar o código de demonstração do Firebase e colocar nosso código.
+
+O arquivo deverá estar como mostrado a seguir.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.10.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.10.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.10.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.10.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.10.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+  </head>
+  <body>
+
+  </body>
+</html>
+```
+
+As marcações `script` carregam o código JavaScript necessário para o Firebase e seus recursos funcionarem. Dentro de `script`, o `defer` é um atributo booleano que, quando presente, especifica que o script será executado quando a página terminar de carregar. Esse atributo é inserido em marcações `script` com o atributo `src` presente, indicando o caminho de recursos externos.

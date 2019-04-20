@@ -109,6 +109,8 @@ No navegador, você deverá ver uma página como a mostrada na imagem a seguir. 
 
 ![A aplicação em execução no navegador](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-serve.png)
 
+Você encontrará [aqui](https://github.com/antoniojnr/ipw/tree/46aabad7a92d706aa98bd74b638d57c5544872ed/aulas/firebase/tarefas) a aplicação no estado concluído até agora.
+
 ## Próximos passos
 
 Tendo a aplicação inicializada corretamente, vamos definir as opções de [autenticação](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/2-autenticacao.md).
