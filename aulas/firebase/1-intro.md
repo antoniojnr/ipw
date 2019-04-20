@@ -54,4 +54,61 @@ Ao acessar https://console.firebase.google.com, você verá uma página como a m
 
 Na janela de criar um novo projeto, preencha o nome do seu novo projeto, tome nota do ID do projeto (marcado em vermelho na imagem a seguir), marque as caixas para aceitar os termos e clique em "Create Project". Você verá uma janela que indica que seu projeto está sendo criado e, logo após isso, você será redirecionado para a página de seu projeto.
 
-O próximo passo é definir as opções de [autenticação](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/2-autenticacao.md).
+## Inicializando o projeto no seu computador
+
+Agora, de volta ao terminal, você vai utilizar o seguinte comando para inicializar o projeto no diretório criado.
+
+`firebase init -P [ID do projeto]`
+
+O ID do projeto é aquele que eu pedi para você tomar nota no passo anterior. Caso não tenha feito isso, basta voltar para https://console.firebase.google.com. O ID do projeto aparecerá embaixo do nome do projeto criado.
+
+Marque os itens (Firestore, Functions, Hosting e Storage), conforme a imagem a seguir. Use as teclas de seta para mover-se entre as opções e barra de espaço para selecionar.
+
+![Inicializando projeto no seu computador](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-init-proj.png)
+
+Você verá as perguntas a seguir, para as quais deverá responder como indicado:
+
+1. What file should be used for Firestore Rules? **[Aperte Enter para manter o nome padrão]**
+2. What file should be used for Firestore indexes? **[Aperte Enter para manter o nome padrão]**
+3. What language would you like to use to write Cloud Functions? **[Aperte Enter para selecionar JavaScript (valor padrão)]**
+4. Do you want to use ESLint to catch probable bugs and enforce style? **[Digite 'y' e aperte Enter]**
+5. Do you want to install dependencies with npm now? **[Digite 'y' e aperte Enter]**
+6. What do you want to use as your public directory? **[Aperte Enter para manter o nome padrão]**
+7. Configure as a single-page app (rewrite all urls to /index.html)? **[Digite 'y' e aperte Enter]**
+8. What file should be used for Storage Rules? **[Aperte Enter para manter o nome padrão]**
+
+Após isso, você verá a mensagem "Firebase initialization complete!" e o projeto terá sido criado no diretório.
+
+## A estrutura do projeto
+
+Depois de criado, o projeto possui a seguinte estrutura:
+
+```
+tarefas
+ |- firebase.json
+ |- firebase.indexes.json
+ |- firestore.rules
+ |- storage.rules
+ |- functions
+     |- node_modules
+         |- ...
+     |- index.js
+     |- package-lock.json
+     |- package.json
+ |- public
+     |- index.html
+```
+
+Para executar o projeto, no terminal, digite: `firebase serve`.
+
+O servidor do Firebase procurará uma porta disponível para executar. No meu caso, a 5000. Como indicado na imagem a seguir, o endereço para o servidor local é http://localhost:5000. Vá até o navegador e digite o endereço.
+
+![Executando a aplicação](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-serve.png)
+
+No navegador, você deverá ver uma página como a mostrada na imagem a seguir. O texto marcado em vermelho na página mostra que o Firebase foi carregado corretamente, junto com os módulos: auth, database, messaging, storage.
+
+![A aplicação em execução no navegador](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-serve.png)
+
+## Próximos passos
+
+Tendo a aplicação inicializada corretamente, vamos definir as opções de [autenticação](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/2-autenticacao.md).
