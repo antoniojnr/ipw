@@ -36,4 +36,4 @@ Depois de receber a confirmação que o comando foi executado com sucesso, feche
 
 Agora, crie um diretório para seu novo projeto. Eu vou chamar o meu de "tarefas". Nós vamos montar uma aplicação para gerenciamento de tarefas. No Windows, você também pode usar o comando `mkdir tarefas` para criar um diretório chamado tarefa. Após criar, use `cd tarefas` para entrar no diretório.
 
-
+![Criando o diretório 'tarefas'](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/bash-mkdir-tarefas.png)
