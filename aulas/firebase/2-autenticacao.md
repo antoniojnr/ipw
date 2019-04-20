@@ -29,3 +29,5 @@ Habilite o método de autenticação, clicando no botão "Enable", insira seu em
 ![Configurando autenticação pelo Google](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-config-google-auth-2.png)
 
 Pronto. Ao retornar para a lista de provedores de autenticação, você verá que a autenticação pelo Google estará habilitada.
+
+## Configurando provedores de autenticação na aplicação
