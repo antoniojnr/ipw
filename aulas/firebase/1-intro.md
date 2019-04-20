@@ -37,3 +37,21 @@ Depois de receber a confirmação que o comando foi executado com sucesso, feche
 Agora, crie um diretório para seu novo projeto. Eu vou chamar o meu de "tarefas". Nós vamos montar uma aplicação para gerenciamento de tarefas. No Windows, você também pode usar o comando `mkdir tarefas` para criar um diretório chamado tarefa. Após criar, use `cd tarefas` para entrar no diretório.
 
 ![Criando o diretório 'tarefas'](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/bash-mkdir-tarefas.png)
+
+## Conectando ao Firebase
+
+Após criar o diretório que abrigará o projeto, vamos fazer login no Firebase para ter acesso aos projetos criados através do console (https://console.firebase.google.com). Use o comando `firebase login` para fazer login no Firebase.
+
+![Fazendo login no Firebase](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/bash-firebase-login.png)
+
+Você será redirecionado para a janela de autenticação do Google. Após completar o processo de autenticação, você verá a mensagem `✔  Success! Logged in as [seu email]` no terminal. Agora você poderá criar um projeto e ter acesso a este através do terminal.
+
+## Criando um novo projeto
+
+Ao acessar https://console.firebase.google.com, você verá uma página como a mostrada a seguir, exceto que para você, provavelmente nenhum projeto estará listado. Clique no botão "Add Project" (Você poderá ver o texto em português, dependendo da linguagem padrão do seu navegador).
+
+![Criando projeto no console do Firebase](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-console.png)
+
+Na janela de criar um novo projeto, preencha o nome do seu novo projeto, tome nota do ID do projeto (marcado em vermelho na imagem a seguir), marque as caixas para aceitar os termos e clique em "Create Project". Você verá uma janela que indica que seu projeto está sendo criado e, logo após isso, você será redirecionado para a página de seu projeto.
+
+O próximo passo é definir as opções de [autenticação](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/2-autenticacao.md).
