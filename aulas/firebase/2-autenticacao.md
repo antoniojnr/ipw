@@ -64,3 +64,103 @@ O arquivo deverá estar como mostrado a seguir.
 ```
 
 As marcações `script` carregam o código JavaScript necessário para o Firebase e seus recursos funcionarem. Dentro de `script`, o `defer` é um atributo booleano que, quando presente, especifica que o script será executado quando a página terminar de carregar. Esse atributo é inserido em marcações `script` com o atributo `src` presente, indicando o caminho de recursos externos.
+
+O projeto completado até este ponto está disponível [aqui](https://github.com/antoniojnr/ipw/tree/e893a8c6b14b744ebbc84e166bb3628479359bc5/aulas/firebase/tarefas).
+
+Para continuar, precisaremos instalar o FirebaseUI, que é uma biblioteca JavaScript construída com base no Firebase. O FirebaseUI provê uma solução de autenticação que cuida de todo o fluxo de interface para efetuar o login de usuários usando endereços de email e senha, e provedores de autenticação como Google, Facebook e outros. Foi construído com base no Firebase Auth.
+
+Você irá instalar o FirebaseUI no diretório *public* de seu projeto. No diretório *public*, digite no terminal: `npm install firebaseui`. Você terá, então, a seguinte estrutura de projeto.
+
+```
+tarefas
+ |- ...
+ |- public
+     |- index.html
+     |- node_modules
+         |- ...
+         |- firebaseui
+```
+
+O diretório *public/node_modules/firebaseui* terá os arquivos necessários para usar o FirebaseUI na nossa aplicação. Precisaremos importá-los no HTML.
+
+```html
+  ...
+  <head>
+    ...
+    <script src="node_modules/firebaseui/dist/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="node_modules/firebaseui/dist/firebaseui.css" />
+  </head>
+  ...
+</html>
+```
+
+Perceba que os arquivos foram carregados a partir dos arquivos baixados no diretório *node_modules*.
+
+Para manter a organização o nosso projeto, vamos deixar o código JavaScript separado do HTML. Dentro de *public*, crie um diretório chamado *js* e, dentro deste, um arquivo chamado *auth.js*. Você terá, agora, a seguinte estrutura no diretório *public*.
+
+```
+tarefas
+ |- ...
+ |- public
+     |- index.html
+     |- node_modules
+         |- ...
+         |- firebaseui
+     |- js
+         |- auth.js
+```
+
+No diretório *js*, vamos manter todo o código JavaScript do nosso projeto. No HTML, insira a marcação `script` para carregar o arquivo *js/auth.js* logo após os últimos arquivos *js* e *css* importados e antes do fim da marcação de encerramento `</head>`. Use o atributo `defer` para que o carregamento do código JavaScript seja adiado para quando o HTML tiver sido carregado. Sem o `defer`, o código que iremos colocar em *js/auth.js*  tentará acessar elementos que ainda não terão sido carregados. No exemplo de código abaixo, o código parcial é exibido para mostrar apenas a parte essencial.
+
+Insira também um `<div>` com o `id="firebaseui-auth-container"`. É neste `div` que será inserida a interface de autenticação.
+
+```html
+  ...
+  <head>
+    ...
+    <script defer src="js/auth.js"></script>
+  </head>
+  <body>
+    <div id="firebaseui-auth-container"></div>
+  </body>
+</html>
+```
+
+Dentro de *js/auth.js*, você irá inserir o código abaixo. No objeto `uiConfig`, o atributo `signInSuccessUrl` indica para onde o usuário será redirecionado caso consiga autenticar-se com sucesso – neste caso, será redirecionado para *home.html*, que ainda vamos criar.
+
+A lista `signInOptions` define os provedores de autenticação que você irá usar. Iremos utilizar apenas a autenticação com a conta Google e, portanto, é o único que não deixaremos comentado. Caso você deseje ver como a interface ficaria com os botões de outros provedores ativados, basta descomentá-los.
+
+O atributo `tosUrl` determina o local da página contendo os termos de serviço da aplicação e `privacyPolicyUrl` aponta para o caminho da política de privacidade. Ignoraremos ambos por enquanto.
+
+As duas últimas linhas do código inicializam a interface de autenticação e a inserem no `div` inserido anteriormente.
+
+```javascript
+var uiConfig = {
+    signInSuccessUrl: 'home.html',
+    signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        // firebase.auth.GithubAuthProvider.PROVIDER_ID,
+        // firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+        // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+    ],
+    // tosUrl and privacyPolicyUrl accept either url string or a callback
+    // function.
+    // Terms of service url/callback.
+    tosUrl: '/',
+    // Privacy policy url/callback.
+    privacyPolicyUrl: function() {
+        window.location.assign('/');
+    }
+};
+
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+ui.start('#firebaseui-auth-container', uiConfig);
+```
+
+Se você já estiver executando a aplicação, atualize a página no seu navegador, caso contrário, inicialize-a com o comando `firebase serve`. Você deverá ver a página a seguir no navegador.
+
+![Autenticação configurada](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-auth-ok.png)
