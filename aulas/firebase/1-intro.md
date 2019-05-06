@@ -107,7 +107,7 @@ O servidor do Firebase procurará uma porta disponível para executar. No meu ca
 
 No navegador, você deverá ver uma página como a mostrada na imagem a seguir. O texto marcado em vermelho na página mostra que o Firebase foi carregado corretamente, junto com os módulos: auth, database, messaging, storage.
 
-![A aplicação em execução no navegador](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-serve.png)
+![A aplicação em execução no navegador](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-page.png)
 
 Você encontrará [aqui](https://github.com/antoniojnr/ipw/tree/46aabad7a92d706aa98bd74b638d57c5544872ed/aulas/firebase/tarefas) a aplicação no estado concluído até agora.
 

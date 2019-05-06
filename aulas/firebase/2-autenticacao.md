@@ -164,3 +164,81 @@ ui.start('#firebaseui-auth-container', uiConfig);
 Se você já estiver executando a aplicação, atualize a página no seu navegador, caso contrário, inicialize-a com o comando `firebase serve`. Você deverá ver a página a seguir no navegador.
 
 ![Autenticação configurada](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/firebase-auth-ok.png)
+
+O projeto completo, como foi modificado até agora, encontra-se [aqui](https://github.com/antoniojnr/ipw/tree/1af75a4a7fe66ff76e6975984599893f4cac8e27/aulas/firebase/tarefas).
+
+## Configurando a página inicial pós-autenticação
+
+Como configurado acima, a página para onde o Firebase irá redirecionar o usuário depois de autenticado é *home.html*. Vamos criar esta página e exibir algumas informações do usuário. Ainda no diretório *public*, crie a página *home.html*.
+
+Nós não estamos usando nenhum *framework* para facilitar o carregamento de bibliotecas, isso significa que, infelizmente, precisaremos carregar todas as bibliotecas necessárias em cada página HTML nova que criarmos.
+
+Você precisará carregar o Firebase, junto com seus módulos, em todas as páginas que criarmos. Os módulos listados abaixo são os que usaremos nesta página. Os módulos necessários para cada nova página serão indicados conforme precisarmos.
+
+```html
+<script defer src="/__/firebase/5.10.0/firebase-app.js"></script>
+<script defer src="/__/firebase/5.10.0/firebase-auth.js"></script>
+<script defer src="/__/firebase/init.js"></script>
+```
+
+Em *home.html*, nós criaremos um *callback* para o evento *onAuthStateChanged* do módulo de autenticação do Firebase. Um *callback* é uma função que indicará as ações que serão realizadas quando o estado de autenticação mudar (por isso o nome *onAuthStateChanged*). Essas ações são:
+
+* Ao chegar na página, se o usuário estiver autenticado, mantê-lo na página para carregar os dados que pertencem a ele.
+* Ao chegar na página, se o usuário não estiver autenticado, redirecioná-lo para a página de login.
+
+O código JavaScript, assim como na etapa anterior, ficará em um arquivo separado. Manteremos o mesmo nome do HTML, mas mudando a extensão: *js/home.js*. Este arquivo será carregado logo abaixo dos scripts carregados no código acima. O código do arquivo *js/home.js* é o seguinte.
+
+```javascript
+// Determina a função de callback para o evento onAuthStateChanged
+// Quando o estado de autenticação do usuário mudar, seja este desconectar-se
+// ou conectar-se, a função function(user) { ... } será chamada. Neste caso
+// estes estados só mudarão quando a página for atualizada, ou quando fizermos
+// o botão de logout, para sair do sistema.
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // Se o objeto user estiver definido, então o usuário está conectado
+    // Neste caso, criaremos um texto "Você está conectado" e um botão de logout.
+    
+  } else {
+    // Caso contrário, se user for undefined, o usuário não está conectado,
+    // então o redirecionamos para a página de login.
+    window.location.replace('index.html');
+  }
+});
+```
+
+É possível montar uma página HTML inteira usando apenas funções JavaScript para manipular o DOM. O DOM, sigla para *Document Object Model*, é o modelo da página HTML que organiza elementos em uma estrutura de árvore – como uma árvore genealógica. A diferença é que cada elemento aqui tem um único pai (ou mãe, como desejar chamar :).
+
+O DOM provê uma API: funções JavaScript para para criar e acessar elementos de uma página, assim como modificar seu estilo e conteúdo.
+
+As principais funções que usaremos da API e para que servem são listadas a seguir. Você pode utilizar os objetos `document` e `window` para invocar as funções de manipular os filhos de um documento, que são os vários elementos na página.
+
+1. `document.getElementById(id)`: retorna o elemento cujo `id` é o passado como parâmetro. O id de um elemento é definido dentro de sua marcação de abertura. Por exemplo, em `<input type="text" id="nome">`, o id do elemento é "nome". Não pode haver dois elementos com o mesmo id em um documento.
+2. `document.getElementsByTagName(nome)`: retorna um `NodeList` (array) de elementos do tipo `nome`. O nome do elemento é o nome da marcação — por exemplo, `a`, `p`, `h1`, etc. Os elementos podem ser acessados usando `lista[1]` ou `lista.item(1)`, onde `lista` é o array retornado pela função e `1` é o índice do elemento.
+3. `document.createElement(nome)`: cria um objeto do tipo `Element` representando o elemento. `document.createElement("a")` cria um `<a></a>` vazio, que ainda precisa ser anexado a um outro elemento.
+4. `parentNode.appendChild(node)`: anexa um `node` (nó) a outro nó pai `parentNode`. Todo elemento é um tipo de nó.
+5. `elemento.innerHTML`: atribui ou obtém o conteúdo interno de um `elemento`.
+7. `elemento.setAttribute(nome, valor)`: define o `valor` de um atributo de dado `nome` de um `elemento`.
+8. `elemento.getAttribute(nome)`: obtém o valor do atributo de dado `nome` do `elemento`.
+9. `elemento.addEventListener(tipo, listener)`: adiciona um `listener` de evento de um determinado `tipo`. O `listener` é uma função que recebe um único parâmetro, o evento que ocorreu.
+10. `window.onload`: é uma propriedade utilizada para definir um *listener* para o evento `load` do objeto `window`. O evento `load` é disparado quando um elemento termina de carregar – neste caso, quando a página completa termina de carregar.
+
+Utilizando algumas dessas funções, iremos criar o texto "Você está conectado", o botão "Desconectar". O código a seguir cria o texto e botão, e os anexa a `<body>`.
+
+```javascript
+// Cria um elemento h1
+let texto = document.createElement('h1');
+// Cria um elemento button
+let botao = document.createElement('button');
+// Define o texto do h1
+texto.innerHTML = "Você está conectado";
+// Define o texto do button
+botao.innerHTML = "Desconectar";
+// Pega todos os elementos do tipo "body" (só há um)
+let elems = document.getElementsByTagName('body');
+// Pega o único elemento da lista
+let corpo = elems[0];
+// Anexa os dois elementos criados ao corpo
+corpo.appendChild(texto);
+corpo.appendChild(botao);
+```
