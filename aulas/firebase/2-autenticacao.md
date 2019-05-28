@@ -181,6 +181,8 @@ Você precisará carregar o Firebase, junto com seus módulos, em todas as pági
 <script defer src="/__/firebase/init.js"></script>
 ```
 
+### Determinando o estado de autenticação
+
 Em *home.html*, nós criaremos um *callback* para o evento *onAuthStateChanged* do módulo de autenticação do Firebase. Um *callback* é uma função que indicará as ações que serão realizadas quando o estado de autenticação mudar (por isso o nome *onAuthStateChanged*). Essas ações são:
 
 * Ao chegar na página, se o usuário estiver autenticado, mantê-lo na página para carregar os dados que pertencem a ele.
@@ -241,4 +243,14 @@ let corpo = elems[0];
 // Anexa os dois elementos criados ao corpo
 corpo.appendChild(texto);
 corpo.appendChild(botao);
+// Adiciona um listener ao evento "click" do botão
+botao.addEventListener('click', function() {
+  firebase.auth().signOut().then(function() {
+    console.log("Você está desconectado");
+  });
+});
 ```
+
+Uma vez que o código acima funcionará em conjunto com o código da seção [Determinando o estado de autenticação](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/2-autenticacao.md#determinando-o-estado-de-autentica%C3%A7%C3%A3o), ao desconectar-se, o usuário será redirecionado para a página de login.
+
+O código completo do arquivo *js/home.js*, assim como o estado atual do projeto podem ser encontrados aqui.
