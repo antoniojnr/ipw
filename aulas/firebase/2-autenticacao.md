@@ -253,4 +253,4 @@ botao.addEventListener('click', function() {
 
 Uma vez que o código acima funcionará em conjunto com o código da seção [Determinando o estado de autenticação](https://github.com/antoniojnr/ipw/blob/master/aulas/firebase/2-autenticacao.md#determinando-o-estado-de-autentica%C3%A7%C3%A3o), ao desconectar-se, o usuário será redirecionado para a página de login.
 
-O código completo do arquivo *js/home.js*, assim como o estado atual do projeto podem ser encontrados aqui.
+O código completo do arquivo *js/home.js*, assim como o estado atual do projeto podem ser encontrados [aqui](https://github.com/antoniojnr/ipw/tree/fa3513347aeb7ace200a317655568ece7bdf786e/aulas/firebase/tarefas).
