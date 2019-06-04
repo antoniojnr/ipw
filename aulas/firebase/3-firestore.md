@@ -40,9 +40,7 @@ A parte relativa ao Cloud Firestore será feita dentro dos arquivos *home.html* 
 
 Perceba que o novo script sendo importado é o `firebase-firestore.js`. Ele será necessário para utilizar as funções do Cloud Firestore.
 
-## Criando dados
-
-Ao definir as regras de acesso, garantimos que apenas usuários autorizados tenham acesso aos dados. Agora podemos prosseguir para a etapa de criar os dados.
+## Adaptando o código criado anteriormente
 
 O estado atual do código JavaScript dentro do arquivo *js/home.js* é o seguinte:
 
@@ -116,4 +114,49 @@ Com o código substituído, os elementos `h1` e `button` já existirão no HTML 
 </body>
 ```
 
-Para garantir que você fez as modificações corretamente, veja o estado atual do projeto aqui.
+Para garantir que você fez as modificações corretamente, veja o estado atual do projeto [aqui](https://github.com/antoniojnr/ipw/tree/39d0ea491aee74c7d50633e390bfa104ba9e238e/aulas/firebase/tarefas).
+
+## Criando dados
+
+Ao definir as regras de acesso, garantimos que apenas usuários autorizados tenham acesso aos dados. Agora podemos prosseguir para a etapa de criar os dados.
+
+Nós criaremos a parte da aplicação responsável por criar uma nova tarefa, armazenando-a no Cloud Firestore. A estrutura de nossa tarefa é a seguinte:
+
+* `dataCriacao`: timestamp - data de criação da tarefa
+* `titulo`: string - título, ou descrição curta, da tarefa
+* `status`: string - estado da tarefa, cujos possíveis valores são: completa, pendente ou adiada
+* `prazo`: timestamp - prazo para conclusão da tarefa
+* `prioridade`: integer - valor de 1 a 3 que define a prioridade da tarefa: baixa, média ou alta
+
+Para mais informações sobre dados no Cloud Firestore, como organizá-los e modelá-los, leia:
+1. [Modelo de dados](https://firebase.google.com/docs/firestore/data-model)
+2. [Tipos de dados](https://firebase.google.com/docs/firestore/manage-data/data-types)
+3. [Estruturar dados](https://firebase.google.com/docs/firestore/manage-data/structure-data)
+
+Há duas formas de adicionar dados ao Cloud Firestore.
+
+### Criando uma referência de documento
+
+Às vezes, pode ser necessário criar uma referência de documento com um id gerado automaticamente, para depois utilizá-la. O exemplo a seguir mostra como fazer isso e, depois, atribuir dados à referência de documento criada.
+
+```javascript
+// Criando referência para o Firestore
+let db = firebase.firestore();
+
+// Criando uma referência para um novo documento na coleção
+// de tarefas. Imprimir novaTarefa.id mostra o id da referência
+// de documento criada.
+var novaTarefa = db.collection("tarefas").doc();
+console.log(novaTarefa.id);
+
+// Finalmente, para definir os dados, fazemos:
+novaTarefa.set({
+  dataCriacao: new Date(),
+  titulo: "Nova tarefa",
+  status: "pendente",
+  prazo: new Date(), // veremos como trazer um valor de data futura para cá depois
+  prioridade: 2 // prioridade média
+})
+```
+
+Estruturalmente, .add(...) e .doc().set(...) são completamente equivalentes. Portanto, você pode usar o que for mais conveniente.
