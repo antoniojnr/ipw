@@ -272,6 +272,17 @@ db.collection("tarefas").where("status", "==", 'pendente')
   });
 ```
 
+Podemos, também, listar as tarefas cujo `prazo` é maior ou igual à data e hora atual.
+
+```javascript
+db.collection("tarefas").where("prazo", ">=", new Date())
+  .get().then(function(querySnapshot) {
+    for (let doc of querySnapshot) {
+      console.log(doc.id, " => ", doc.data());
+    });
+  });
+```
+
 Além de filtrados, os dados em uma consulta podem ser ordenados através do método `orderBy()`. O código a seguir ordena a lista de documentos obtidos da coleção de tarefas pela data `criadaEm`, em ordem decrescente (definida pelo parâmetro "desc"). O parâmetro de ordenação pode ser "asc" para crescente ou "desc" para decrescente.
 
 ```javascript
