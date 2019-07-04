@@ -261,8 +261,22 @@ db.collection("tarefas").get().then(function(querySnapshot) {
 
 Para especificar parâmetros de busca, use o método `where()`. Para saber mais sobre consultas e operadores veja a página [consultas](https://firebase.google.com/docs/firestore/query-data/queries).
 
+O código a seguir obtém todas as tarefas cujo status é "pendente".
+
 ```javascript
 db.collection("tarefas").where("status", "==", 'pendente')
+  .get().then(function(querySnapshot) {
+    for (let doc of querySnapshot) {
+      console.log(doc.id, " => ", doc.data());
+    });
+  });
+```
+
+Além de filtrados, os dados em uma consulta podem ser ordenados através do método `orderBy()`. O código a seguir ordena a lista de documentos obtidos da coleção de tarefas pela data `criadaEm`, em ordem decrescente (definida pelo parâmetro "desc"). O parâmetro de ordenação pode ser "asc" para crescente ou "desc" para decrescente.
+
+```javascript
+db.collection("tarefas")
+  .orderBy("criadaEm", "desc")
   .get().then(function(querySnapshot) {
     for (let doc of querySnapshot) {
       console.log(doc.id, " => ", doc.data());
