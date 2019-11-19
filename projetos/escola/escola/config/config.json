@@ -1,0 +1,17 @@
+{
+  "production": {
+    "storage": "./db.sql",
+    "omitNull": true,
+    "dialect": "sqlite"
+  },
+  "development": {
+    "storage": "./db.dev.sql",
+    "omitNull": true,
+    "dialect": "sqlite"
+  },
+  "test": {
+    "storage": "./db.test.sql",
+    "omitNull": true,
+    "dialect": "sqlite"
+  }
+}
