@@ -3,7 +3,25 @@ const app = express();
 const models = require('../models/index');
 const User = models.User;
 
-// GET, POST, DELETE, PUT/PATCH
+/* Exercício:
+   1. Padronizar as respostas de todas as requisições
+   2. Criar a rota GET para um único usuário (exemplo: GET /users/fulano)
+   3. Fazer uma rota de login (POST, corpo: { name, password })
+   3.1. A rota de login retorna:
+        { error: false, message: "Usuário conectado."} (se credenciais estiverem corretas)
+        { error: true, message: "Nome de usuário ou senha incorretos."} (se credenciais estiverem erradas)
+*/
+
+// Remover usuário
+app.delete('/users/:name', function(req, res) {
+  User.destroy({
+    where: {
+      name: req.params.name
+    }
+  }).then(function(resultado) {
+    res.json(resultado);
+  })
+});
 
 // Atualizar usuário
 app.put('/users', function(req, res) {
